@@ -1,9 +1,8 @@
 public class newSorting {
     //passed an array of int pos/neg with dupes along with size to know when to swap to quick sort
-    //not sure where size is gotten from, must ask michele tomorrow
     public void newSorting(int [] A, int size){
         //base case
-        if(A.length < size){
+        if(A.length <= size){
             recursiveQuicksort(A);  //if array is smaller then size recursive quick sort it
         }else{
             //new sort left and right of the array
@@ -31,11 +30,18 @@ public class newSorting {
         }
     }
     /////////////////////////////////////////////////////////////////////
-    public void mergeSortedHalves(int [] A, int [] left, int [] right){
-
+    private void mergeSortedHalves(int [] A, int [] left, int [] right){
     }
+
     /////////////////////////////////////////////////////////////////////
-    public void recursiveQuicksort(int [] A){
+    //initiator method
+    private void recursiveQuicksort(int [] A){
+        recursiveQuicksort(A,0,A.length-1);
+    }
+
+    //////////////////////////////////////////////////////////////////////
+    //actually does the recursion
+    private void recursiveQuicksort(int [] A, int start, int end){
         int pivot = A[0];   //select pivot
         int mid = A.length/2;
         int [] A1 = new int[mid];           //declare 2 new arrays to be used
