@@ -45,5 +45,4 @@ public class newSortingTester {
         newSorting ns = new newSorting();
         ns.newSorting(A,4);
     }
-
 }
