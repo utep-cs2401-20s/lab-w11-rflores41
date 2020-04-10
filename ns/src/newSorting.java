@@ -30,7 +30,21 @@ public class newSorting {
         }
     }
     /////////////////////////////////////////////////////////////////////
-    private void mergeSortedHalves(int [] A, int [] left, int [] right){
+    private void mergeSortedHalves(int [] A, int [] left, int [] right) {
+        int cL = 0;     //counter for left array
+        int cR = 0;     //counter for right array
+        int cA = 0;     //counter for main array
+        while (cL + cR != A.length) {   //while we haven't put the array together, do this
+            if (left[cL] < right[cL]) { //if the left array data is smaller put it in the main array
+                A[cA] = left[cL];
+                cL++;                   //increment left side array as we don't need that spot anymore
+                cA++;                   //increment main array counter so we don't override data just added
+            }else{
+                A[cA] = right[cR];  //else put the right array data in the main array
+                cA++;               //increment right side array as we don't need that spot anymore
+                cR++;               //increment main array counter so we don't override data just added
+            }
+        }
     }
 
     /////////////////////////////////////////////////////////////////////
@@ -42,8 +56,8 @@ public class newSorting {
     //////////////////////////////////////////////////////////////////////
     //actually does the recursion
     private void recursiveQuicksort(int [] A, int start, int end){
-        int pivot = A[0];   //select pivot
-        int mid = A.length/2;
+        int pivot = A[0];                   //select pivot
+        int mid = A.length/2;               //find middle of array
         int [] A1 = new int[mid];           //declare 2 new arrays to be used
         int [] A2 = new int[A.length - mid];
         //partition using the pivot into the new arrays
